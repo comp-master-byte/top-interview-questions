@@ -1,3 +1,36 @@
+const s1= "Ася, молоко около мяса"; // true
+const s2= "A man, a plan, a canal: Panama"; // true
+const s3= " "; // true
+const s4= "race a car"; // false
+const s5= "university" // false
+const s6= "ab_a"; // true
+const s8= "Я - дядя ежу. Уже я дядя..."; // true
+
+// #3 Solution - эталонное решение
+function isPalindromeV3(str) {
+  if(!str.length) {
+    return false;
+  }
+
+  str = str.toLowerCase().replace(/\W/g, '');
+
+  const len = Math.floor(str.length / 2);
+
+  for(let i = 0; i < len; i++) {
+    if(str[i] !== str[str.length - i - 1]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// #1 Solution
+function isPalindrome(str) {
+  str = str.toLowerCase().replace(/\W/g, '');
+  return str === str.split('').reverse().join('');
+}
+
 /**
  * \W - берет все НЕ буквенные значения, кроме _ и также не учитывает кириллицу
  * поэтому есть второй вариант регулярки: /[^0-9a-zA-Zа-яА-ЯёЁ]/g
